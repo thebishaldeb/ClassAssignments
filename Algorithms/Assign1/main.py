@@ -51,31 +51,37 @@ def mergeSort(arr,l,r):
 
 # FUNCTIONS END 
 
-db1 = []
-db2 = []
+db1 = dict()
+db2 = dict()
 
-count = int(input('Enter the nmuber of movies for each data movies: '))
+count = int(input('Enter the number of movies for each database: '))
 
-print('Enter the duration for 1st database')
+print("\nEnter the movie name and duration for 1st database: ")
 for i in range(count):
-    db1.append(int(input()))
+    movie = input('Enter the movie: ')
+    dur = int(input("Enter the duration: "))
+    db1[dur] = movie
 
-print('Enter the duration for 2nd database')
+print("\nEnter the movie name and duration for 2nd database: ")
 for i in range(count):
-    db2.append(int(input()))
+    movie = input('Enter the movie: ')
+    dur = int(input("Enter the duration: "))
+    db2[dur] = movie
 
 print(db1)
 print(db2)
 
-mergeSort(db1, 0, count - 1)
-mergeSort(db2, 0, count - 1)
+# mergeSort(db1.keys, 0, count - 1)
+# mergeSort(db2.keys, 0, count - 1)
 
-print(merge(db1 + db2, 0, count-1, len(db1 + db2)-1))
+# print(merge(db1.keys + db2.keys, 0, count-1, len(db1 + db2)-1))
 
 kth = int(input('\nEnter the no of the smallest movie: '))
 
 
-print('\nThe reqd. element is ', merge(db1 + db2, 0, count-1, len(db1 + db2)-1)[kth-1])
+print('\nThe reqd. movie from first database is ', db1[sorted(db1)[kth-1]])
 
-print("\nThe median of the movies in the two databases is ", merge(db1 + db2, 0, count-1, len(db1 + db2)-1)[int((len(db1 + db2)-1)/2)])
+print('\nThe reqd. movie from second database is ', db2[sorted(db2)[kth-1]])
+
+print("\nThe median of the movies in the two databases is ", {**db1, **db2}[merge(sorted(db1) + sorted(db2), 0, count-1, len(sorted(db1) + sorted(db2))-1)[int((len(sorted(db1) + sorted(db2))-1)/2)]])
 
