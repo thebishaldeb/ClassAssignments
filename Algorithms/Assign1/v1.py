@@ -1,6 +1,8 @@
-# Suppose two databases have a collection of movies. Each database has same number of movies which are unique i.e. each database has different set of movies. Now if you query to the database for th Kth movie, it'll return the Kth smallest movie (smallest in terms of duration). Now you need to calculate thr median of the set of two databases of movies
-
-
+#  Suppose two databases have a collection of movies. Each database has same 
+#  number of movies which are unique i.e. each database has different
+#  set of movies. Now if you query to the database for th Kth movie, it'll
+#  return the Kth smallest movie (smallest in terms of duration). Now
+#  you need to calculate thr median of the set of two databases of movies
 
 
 # FUNCTIONS START
@@ -41,13 +43,6 @@ def merge(arr, l, m, r):
         k += 1
     
     return arr
-  
-def mergeSort(arr,l,r): 
-    if l < r: 
-        m = int((l+(r-1))/2)
-        mergeSort(arr, l, m)
-        mergeSort(arr, m+1, r)
-        arr = merge(arr, l, m, r)
 
 # FUNCTIONS END 
 
