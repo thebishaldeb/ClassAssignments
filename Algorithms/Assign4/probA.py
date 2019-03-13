@@ -1,24 +1,14 @@
-# check function to check is a subset is possible to create Z by the addition or subtraction of 
-# its elements
-# we check if leaving, adding , or subtracting the last element of the set 
-# on each recursive call can generate us the given integer Z
-# we make z = z if last element is left
-# z=z+last element , if last element is subtracted
-# z=z-last element ,	if last element is added
-# hence we seek if Z is zero or not
-
 # FUNCTIONS
 
+# We define a function to check if any sub-array is possible which gives the "sum" by
+# adding, subtracting or leaving the elements from the main list
 def SubArraySum( arr, endIndex,  sum, answer):
     if sum == 0:
         return True
     elif endIndex >= 0 and answer == False:
-		# leaving last index
-        answer = SubArraySum( arr, endIndex-1, sum, answer)
-		# subtracting last index
-        answer = SubArraySum( arr, endIndex-1, sum - arr[endIndex], answer)
-	 	# adding last index
-        answer = SubArraySum( arr, endIndex-1, sum + arr[endIndex], answer)
+        answer = SubArraySum( arr, endIndex-1, sum, answer) # last index ignored
+        answer = SubArraySum( arr, endIndex-1, sum - arr[endIndex], answer) # subtracting last index value
+        answer = SubArraySum( arr, endIndex-1, sum + arr[endIndex], answer) # adding last index value from main array
     return answer
 
 # MAIN PROGRAM
@@ -28,13 +18,13 @@ answer = False # Answer initialized to false
 
 print("Given List is", ListOFElements)
 
-sum = int(input("\nEnter the sum to be checked "))
+sum = int(input("\nEnter the sum that needs to be checked "))
 
 N = len(ListOFElements) # Total no of elements in the list
 
 answer = SubArraySum( ListOFElements , N-1, sum, answer)
 
 if answer == True:
-    print("\nYes, such a subset will exist")
+    print("\nYes, elements from the main list give the required sum.")
 else:
-    print("\nNo, such a subset doesn't exist")
+    print("\nNo, no elements of the main list give the required sum.")
