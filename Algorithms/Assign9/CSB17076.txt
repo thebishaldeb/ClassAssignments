@@ -1,0 +1,28 @@
+                        DAA LAB
+                      Assignment 9
+                                        
+Objective: Reconstructing the original message/string
+
+Input:     strings that are part of the original string/message
+           <some strings can occur multiple times>
+
+Constrains: Input strings are overlappable--either at front(prefix) or at back (postfix)
+
+Algorithm/Pseudocode:
+    First Input is taken from the file and stored as a node.
+    
+    We will make a weighted graph representing the relation of one string to other and the weights would be calculated by the overlaping factor and the length of the strings.
+
+    We will pick up a node and traverse to its neighbour with the highest weight and combine the two strings (or maybe completely absorbed).
+
+    We will keep on traversing till we find no suitable neighbours to traverse to.
+
+    The ending overlap all the substrings and that would give us the resultant string.
+
+Proof:
+    Since the resultant string will be able to absorb all the provided substrings therefore it is the only possible combination of the substrings.
+
+Members:
+    CSB17017
+    CSB17053
+    CSB17076
